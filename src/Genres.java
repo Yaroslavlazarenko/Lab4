@@ -1,11 +1,11 @@
 public enum Genres {
-    Metal,
-    Soul,
-    Rock,
-    Classical,
-    Rap,
-    Trap,
-    Electronic,
-    Pop;
+    METAL,
+    SOUL,
+    ROCK,
+    CLASSICAL,
+    RAP,
+    TRAP,
+    ELECTRONIC,
+    POP;
     public static final Genres[] genres = Genres.values();
 }

@@ -1,7 +1,6 @@
 import java.time.LocalDate;
-import java.util.*;
 
-public class Employers {
+public class Employee {
     private Surnames surname;
     private Positions position;
     private LocalDate signingContract;
@@ -29,12 +28,15 @@ public class Employers {
     }
 
     public void soonEndContract() {
-        if (signingContract.plusDays(termContract).toEpochDay() - LocalDate.now().toEpochDay() < 6) {
-            System.out.println("Фамилия: " + surname);
-            System.out.println("Профессия: " + position);
-            System.out.println("Дата подписания контракта: " + signingContract);
-            System.out.println("Длительность контракта: " + termContract);
-            System.out.println("Оклад: " + salary + "\n");
-        }
+        if (signingContract.plusDays(termContract).toEpochDay() - LocalDate.now().toEpochDay() < 6)
+            System.out.println("Фамилия: " + this.surname.toString().substring(0,1).toUpperCase() +
+                    this.surname.toString().substring(1).toLowerCase() +
+
+                    "\nПрофессия: " + this.position.toString().substring(0,1).toUpperCase() +
+                    this.position.toString().substring(1).toLowerCase() +
+
+                    "\nДата подписания контракта: " + this.signingContract +
+                    "\nДлительность контракта: " + this.termContract +
+                    "\nОклад: " + this.salary + "\n");
     }
 }

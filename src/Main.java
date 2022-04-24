@@ -8,27 +8,37 @@ public class Main {
     /**
      * Вывести данные о пластинках, тираж которых
      * превышает 10000 экземпляров.
-     *
+     * <p>
      * Исполнитель
      * Жанр
      * Название альбома
      * Тираж
      */
     private static void task1() {
-        Plates plate1 = new Plates();
-        Plates plate2 = new Plates();
-        Plates plate3 = new Plates();
-        Plates plate4 = new Plates();
-        Plates[] plates = new Plates[]{plate1, plate2, plate3, plate4};
+        final byte NumberPlate = 4;
 
-        fillPlateData(plates);
-        moreCopies(plates);
+        Plate plate1 = new Plate();
+        Plate plate2 = new Plate();
+        Plate plate3 = new Plate();
+        Plate plate4 = new Plate();
+        final Plates plates = new Plates(NumberPlate);
+
+        plates.addPlate(plate1);
+        plates.addPlate(plate2);
+        plates.addPlate(plate3);
+        plates.addPlate(plate4);
+
+        for (byte i = 0; i < NumberPlate; i++)
+            fillPlateData(plates.givePlate(i));
+
+        for (byte i = 0; i < NumberPlate; i++)
+            plates.givePlate(i).moreCopies();
     }
 
     /**
      * Вывести сведения о работниках, срок действия контракта
      * которых истекает в течении 5-ти дней.
-     *
+     * <p>
      * Фамилия работника
      * Должность
      * Дата подписания контракта
@@ -37,43 +47,38 @@ public class Main {
      */
 
     private static void task2() {
-        Employers employer1 = new Employers();
-        Employers employer2 = new Employers();
-        Employers employer3 = new Employers();
-        Employers employer4 = new Employers();
-        Employers[] employers = new Employers[]{employer1,employer2,employer3,employer4};
+        final byte NumberEmployees = 4;
 
-        fillEmployers(employers);
-        soonEndContract(employers);
+        Employee employee1 = new Employee();
+        Employee employee2 = new Employee();
+        Employee employee3 = new Employee();
+        Employee employee4 = new Employee();
+        final Employees employees = new Employees(NumberEmployees);
+
+        employees.addEmployee(employee1);
+        employees.addEmployee(employee2);
+        employees.addEmployee(employee3);
+        employees.addEmployee(employee4);
+
+        for (byte i = 0; i < NumberEmployees; i++)
+            fillEmployers(employees.giveEmployee(i));
+
+        for (byte i = 0; i < NumberEmployees; i++)
+            employees.giveEmployee(i).soonEndContract();
     }
 
-    private static void fillPlateData(Plates plates[]) {
-        for (Plates plate : plates) {
-            plate.setPerformer();
-            plate.setGenre();
-            plate.setAlbum();
-            plate.setAmount();
-        }
+    private static void fillPlateData(Plate plate) {
+        plate.setPerformer();
+        plate.setGenre();
+        plate.setAlbum();
+        plate.setAmount();
     }
 
-    private static void moreCopies(Plates plates[]) {
-        for (Plates plate : plates)
-            plate.moreCopies();
-    }
-
-    private static void fillEmployers(Employers employers[]){
-        for(Employers employer:employers){
-            employer.setSurname();
-            employer.setPosition();
-            employer.setSigningContract();
-            employer.setTermContract();
-            employer.setSalary();
-        }
-    }
-
-    private static void soonEndContract(Employers employers[]){
-        for(Employers employer:employers){
-            employer.soonEndContract();
-        }
+    private static void fillEmployers(Employee employee) {
+        employee.setSurname();
+        employee.setPosition();
+        employee.setSigningContract();
+        employee.setTermContract();
+        employee.setSalary();
     }
 }

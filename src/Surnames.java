@@ -1,8 +1,8 @@
 public enum Surnames {
-    Williams,
-    Peters,
-    Gibson,
-    Martin,
-    Jordan;
+    WILLIAMS,
+    PETERS,
+    GIBSON,
+    MARTIN,
+    JORDAN;
     public static final Surnames[] surnames = Surnames.values();
 }

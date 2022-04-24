@@ -1,7 +1,7 @@
 public enum Performers {
-    Rompasso,
-    Tommo,
-    Zivert,
-    Jamik;
+    ROMPASSO,
+    TOMMO,
+    ZIVERT,
+    JAMIK;
     public static final Performers[] performers = Performers.values();
 }
