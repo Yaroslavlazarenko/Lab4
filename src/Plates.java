@@ -1,35 +1,18 @@
 public class Plates {
-    private Performers performer;
-    private Genres genre;
-    private Albums album;
-    private int amount;
-    private boolean moreTenThousand;
+    private final Plate[] plates;
+    private int currentUserNumber;
 
-    public void setPerformer() {
-        this.performer = Performers.performers[(int) (Math.random() * Performers.performers.length)];
+    public Plates(final byte usersNumber) {
+        this.plates = new Plate[usersNumber];
+        currentUserNumber = -1;
     }
 
-    public void setGenre() {
-        this.genre = Genres.genres[(int) (Math.random() * Genres.genres.length)];
+    public void addPlate(final Plate plate) {
+        if (++currentUserNumber < plates.length)
+            plates[currentUserNumber] = plate;
     }
 
-    public void setAlbum() {
-        this.album = Albums.albums[(int) (Math.random() * Albums.albums.length)];
+    public Plate givePlate(byte NumberPlate){
+        return plates[NumberPlate];
     }
-
-    public void setAmount() {
-        this.amount = (int) (Math.random() * 16000);
-        if (this.amount > 10000)
-            this.moreTenThousand = true;
-    }
-
-    public void moreCopies() {
-        if (moreTenThousand) {
-            System.out.println("Исполнитель: " + performer);
-            System.out.println("Жанр: " + genre);
-            System.out.println("Альбом: " + album);
-            System.out.println("Тираж: " + amount + "\n");
-        }
-    }
-
 }
