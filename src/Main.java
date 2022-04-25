@@ -8,7 +8,7 @@ public class Main {
     /**
      * Вывести данные о пластинках, тираж которых
      * превышает 10000 экземпляров.
-     * <p>
+     *
      * Исполнитель
      * Жанр
      * Название альбома
@@ -28,17 +28,22 @@ public class Main {
         plates.addPlate(plate3);
         plates.addPlate(plate4);
 
-        for (byte i = 0; i < NumberPlate; i++)
-            fillPlateData(plates.givePlate(i));
 
-        for (byte i = 0; i < NumberPlate; i++)
-            plates.givePlate(i).moreCopies();
+        for (byte i = 0; i < NumberPlate; i++) {
+            plates.givePlate(i).fillPlateData();
+        }
+
+        System.out.println(plates.findMore10000Copies(plates));
+
+//      final Plates plates2 = new Plates(plate1, plate2, plate3, plate4, plate1, plate1, plate3);
+//      System.out.println(plates2);
     }
+
 
     /**
      * Вывести сведения о работниках, срок действия контракта
      * которых истекает в течении 5-ти дней.
-     * <p>
+     *
      * Фамилия работника
      * Должность
      * Дата подписания контракта
@@ -60,25 +65,10 @@ public class Main {
         employees.addEmployee(employee3);
         employees.addEmployee(employee4);
 
-        for (byte i = 0; i < NumberEmployees; i++)
-            fillEmployers(employees.giveEmployee(i));
+        for (byte i = 0; i < NumberEmployees; i++) {
+            employees.giveEmployee(i).fillEmployeeData();
+        }
 
-        for (byte i = 0; i < NumberEmployees; i++)
-            employees.giveEmployee(i).soonEndContract();
-    }
-
-    private static void fillPlateData(Plate plate) {
-        plate.setPerformer();
-        plate.setGenre();
-        plate.setAlbum();
-        plate.setAmount();
-    }
-
-    private static void fillEmployers(Employee employee) {
-        employee.setSurname();
-        employee.setPosition();
-        employee.setSigningContract();
-        employee.setTermContract();
-        employee.setSalary();
+        System.out.println(employees.soonEndContract(employees));
     }
 }

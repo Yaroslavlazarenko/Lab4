@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+import java.util.Arrays;
+
 public class Employees {
     private final Employee[] employees;
     private int currentEmployerNumber;
@@ -16,4 +19,23 @@ public class Employees {
         return employees[NumberEmployee];
     }
 
+    public final Employees soonEndContract(Employees employees) {
+        byte NumberEmployees=0;
+        for (byte i = 0; i < this.employees.length; i++) {
+            if (employees.giveEmployee(i).getSigningContract().plusDays(employees.giveEmployee(i).getTermContract()).toEpochDay() - LocalDate.now().toEpochDay() < 6)
+                NumberEmployees++;
+        }
+
+        final Employees temp = new Employees(NumberEmployees);
+        for (byte i = 0; i < this.employees.length; i++) {
+            if (employees.giveEmployee(i).getSigningContract().plusDays(employees.giveEmployee(i).getTermContract()).toEpochDay() - LocalDate.now().toEpochDay() < 6)
+                temp.addEmployee(employees.giveEmployee(i));
+        }
+        return temp;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(employees);
+    }
 }
